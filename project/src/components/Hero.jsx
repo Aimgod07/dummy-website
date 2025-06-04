@@ -46,7 +46,9 @@ const Hero = () => {
               Quickly Book A Dummy Ticket For Your Visa Application, Immigration, Passport Renewal. At A Reasonable Price within 30 to 60 minutes.
             </p>
           </div>
+          <a href="/buynow" style={{ textDecoration: "none", color: "inherit" }}>
           <button className="btn-primary font-bold" style={{ marginTop: "1.5rem", opacity: 1 }}>Buy Now</button>
+          </a>
         </div>
       </div>
     </div>

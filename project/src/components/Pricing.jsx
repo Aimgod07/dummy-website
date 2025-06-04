@@ -1,10 +1,15 @@
 const Pricing = () => {
     return (
        <>
-           <div className="bg-gray-300 p-4 rounded-lg text-center mt-2 mb-0  bg-opacity-60">
-            <h2 className="text-3xl font-bold text-center mt-10 mb-6" style={{fontSize:"2.2rem"}}>PRICING</h2>
+
+       <div className="pricing">
+             <div className="bg-gray-300 p-4 rounded-lg text-center mt-2 mb-0  bg-opacity-60" >
+            <h2 className="text-3xl font-bold text-center mt-10 mb-6" style={{fontSize:"2.2rem", fontFamily:"serif"}}>
+                PRICING</h2>
            </div>
        
+       </div>
+         
           
    
           <div className="grid grid-cols-3 gap-4 mt-6 ">
@@ -19,7 +24,7 @@ const Pricing = () => {
                            Validity Depends on Jorney route and Journey date.It may be 48 hours to 21 days. Generally, Valid for 1 - 2 weeks.<br></br>
                        Quick Delivery between 30 to 60 minutes.<br></br></p><br></br>
 
-            <button className="bg-red-400 text-white px-4 py-2 rounded-lg mt-4  hover:bg-white hover:text-red-500 ">Buy Now| $5</button>
+            <button className="bg-red-400 text-white px-4 py-2 rounded-lg mt-4  hover:bg-white hover:text-red-500 ">Buy Now</button>
         </div>
 
         <div className="bg-gray-300 p-4 rounded-lg text-center hover:shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-opacity-60" style={{marginTop:"20px", padding:"20px" ,maxWidth:"300px",maxHeight:"550px" ,marginLeft:"100px"}}> 
@@ -33,7 +38,7 @@ const Pricing = () => {
 
                                    Quick Delivery between 30 to 60 minutes.</p><br></br>
 
-            <button className="bg-red-400 text-white px-4 py-2 rounded-lg mt-5  hover:bg-white hover:text-red-500 ">Buy Now| $3</button>
+            <button className="bg-red-400 text-white px-4 py-2 rounded-lg mt-5  hover:bg-white hover:text-red-500 ">Buy Now</button>
         </div>
 
 
@@ -53,7 +58,7 @@ Benifecial In Immigration and Visa Application.<br></br>
 
 Qucik Delivery between 30 to 60 minutes.</p><br></br>
 
-            <button className="bg-red-400 text-white px-4 py-2 rounded-lg mt-4 hover:bg-white hover:text-red-500 ">Buy Now| $8</button>
+            <button className="bg-red-400 text-white px-4 py-2 rounded-lg mt-4 hover:bg-white hover:text-red-500 ">Buy Now</button>
         </div>
 
     </div>

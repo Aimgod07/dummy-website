@@ -1,9 +1,11 @@
 const Howitworks = () => {
     return (
         <>
-               <div className="bg-gray-300 p-4 rounded-lg text-center mt-2 mb-0  bg-opacity-60">
-            <h2 className="text-3xl font-bold text-center mt-10 mb-6" style={{fontSize:"2.2rem", marginTop:"10px"}}>How It Works</h2>
-           </div>
+               <div className="howitworks">
+                <div className="bg-gray-300 p-4 rounded-lg text-center mt-2 mb-0  bg-opacity-60" style={{marginTop:"40px"}}>
+              <h2 className="text-3xl font-bold text-center mt-10 mb-6" style={{fontSize:"2.2rem", marginTop:"10px"}}>How It Works</h2>
+               </div>
+               </div>
        
           
    

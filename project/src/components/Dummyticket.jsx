@@ -13,11 +13,11 @@ const Dummyticket = () => {
             opacity: 0.91,
             padding: "35px",
             maxWidth: "600px",
-            margin: "20px 80px 20px auto",
+            margin: "50px 50px 20px 300px",
           
-          }}
-        >
-          <h2
+            }}
+           >
+           <h2
             style={{
               fontWeight: "bolder",
               fontSize: "2rem",

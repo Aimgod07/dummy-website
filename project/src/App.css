@@ -210,3 +210,25 @@
   box-shadow: 0 2px 16px rgba(0,0,0,0.1);
   padding: 2rem;
 }
+
+.box{
+  display: flex;
+  flex-direction:row ;
+  align-items: center;
+  justify-content: center;
+margin-top: 100px;
+margin-bottom: 50px;
+margin-left: 700px;
+ background: linear-gradient(90deg, #6ec1e4 55%, #a8ffce 100%);
+  box-shadow: 0 2px 16px 0 #1976d288, 0 2px 8px rgba(0,0,0,0.08);
+}
+
+
+.pricing{
+  background: linear-gradient(90deg, #6ec1e4 55%, #a8ffce 100%);
+  box-shadow: 0 2px 16px 0 #1976d288, 0 2px 8px rgba(0,0,0,0.08);
+}
+.howitworks{
+  background: linear-gradient(90deg, #6ec1e4 55%, #a8ffce 100%);
+  box-shadow: 0 2px 16px 0 #1976d288, 0 2px 8px rgba(0,0,0,0.08);
+}
