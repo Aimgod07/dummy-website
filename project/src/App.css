@@ -5,6 +5,12 @@
 @tailwind utilities;
 @tailwind screens;
 
+*{
+  box-sizing: border-box;
+  margin: auto auto auto auto;
+  padding: auto auto auto auto;
+}
+
 
 
 @layer base {

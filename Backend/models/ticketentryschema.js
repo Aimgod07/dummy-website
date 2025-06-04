@@ -17,10 +17,6 @@ const ticketEntrySchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  Date: {
-    type: Date,
-    required: true
-  },
 
 
   Title: {

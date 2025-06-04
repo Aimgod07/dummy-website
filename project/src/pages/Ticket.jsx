@@ -1,3 +1,6 @@
+
+
+
 const Ticket = () => {
   return (
 
@@ -18,7 +21,7 @@ const Ticket = () => {
       </div>
          
           <div className="grid grid-cols-3 gap-4 mt-6 ">
-              <a href="">
+              <a href="/ticketform">
                 <div className="bg-gray-300 p-4 rounded-lg text-center mt-2 mb-0 hover:shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-opacity-60" style={{marginTop:"20px", padding:"20px" ,maxWidth:"300px",maxHeight:"550px",marginLeft:"150px"}} >
             <img src="../assets/flt.png" alt="ticket"style={{padding:"2em"}}/>
             <h3 className="font-semibold my-2">
@@ -34,7 +37,7 @@ const Ticket = () => {
                          </div>
               </a>
 
-          <a href="">
+          <a href="hotelform">
              <div className="bg-gray-300 p-4 rounded-lg text-center hover:shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-opacity-60" style={{marginTop:"20px", padding:"20px" ,maxWidth:"300px",maxHeight:"550px" ,marginLeft:"100px"}}> 
             <img src="../assets/hotel.png" alt="hotel"style={{padding:"2em"}}/>
             <h3 className="font-semibold my-2">HOTEL RESERVATION</h3>

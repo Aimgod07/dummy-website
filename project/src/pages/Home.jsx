@@ -8,7 +8,8 @@ import Pricing from "../components/Pricing";
 const Home = () => {
     return(
         <>
-        <Hero 
+        <div style={{margin:"auto",padding:"auto"}}>
+                 <Hero 
         title="Welcome to Our Website"
         description="Discover amazing content and connect with our community. Join us today!"
         />
@@ -19,6 +20,8 @@ const Home = () => {
         <Howitworks />
   
      
+        </div>
+        
         </>
     )
 }
