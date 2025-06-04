@@ -5,11 +5,11 @@ const hotelEntrySchema = new mongoose.Schema({
     hotelId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Hotel",
-        required: true
+        required: false
     },
     
      CheckInDate: {
-        type: Date,
+        type:Date,
         required: true
     },
 
@@ -17,11 +17,7 @@ const hotelEntrySchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-
-    GuestName: {
-        type: String,
-        required: true
-    },
+    
     City: {
         type: String,
         required: true
@@ -82,4 +78,5 @@ const hotelEntrySchema = new mongoose.Schema({
 });
 
 const HotelEntry = mongoose.model("HotelEntry", hotelEntrySchema);
+
 export default HotelEntry;

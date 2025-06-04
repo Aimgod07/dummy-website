@@ -1,11 +1,12 @@
 import express from 'express';
 
+import {addhotelentry} from '../controller/hotelentrycontroller.js';
 
 
 const router = express.Router();
 
 
-router.post('/hotel',addhotelcustomer);
+router.post('/add',addhotelentry);
 
 
 
