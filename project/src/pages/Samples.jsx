@@ -1,8 +1,17 @@
 const Samples = () => {
   return (
     <>
-    <div className="samples" style={{alignItems: 'center', textAlign: 'center',marginLeft: '100px', marginRight: '10px',marginTop:"60px"}}>
-      <div class="grid grid-flow-col grid-rows-4 gap-8">
+     <div
+            className="bg-gray-100 py-16"
+            style={{
+                backgroundImage: "url('../assets/wow.jpg') ", 
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                obesity: 1,
+            }}>
+                     
+                     <div className="samples" style={{alignItems: 'center', textAlign: 'center',marginLeft: '100px', marginRight: '10px',marginTop:"60px"}}>
+      <div class="grid grid-flow-col grid-rows-4 gap-8" style={{marginLeft:"40px"}}>
   <div>
     <a href="../assets/image.png" >
     <img src="../assets/aeroflot.png" alt="airline" style={{maxBlockSize:"50px"}}/>
@@ -18,7 +27,7 @@ const Samples = () => {
   <img src="../assets/a4.png" alt="airline"style={{maxBlockSize:"50px"}}/></a>
   </div>
   <div>
-    <a href="../assets/image.png" ><img src="../assets/a5.png" alt="airline"style={{maxBlockSize:"50px"}}/></a>
+    <a href="../assets/image.png" ><img src="../assets/a5.png" alt="airline"style={{maxBlockSize:"50px",marginLeft:"30px"}}/></a>
   </div>
   <div>
     <a href="../assets/image.png" ><img src="../assets/a6.png" alt="airline"style={{maxBlockSize:"50px"}}/></a>
@@ -39,7 +48,7 @@ const Samples = () => {
   <img src="../assets/a11.png" alt="airline"style={{maxBlockSize:"50px"}}/></a>
   </div>
   <div><a href="../assets/image.png" >
-  <img src="../assets/a12.png" alt="airline"style={{maxBlockSize:"50px"}}/></a>
+  <img src="../assets/a12.png" alt="airline"style={{maxBlockSize:"50px",marginLeft:"50px"}}/></a>
   </div>
    </div>
 
@@ -49,6 +58,10 @@ const Samples = () => {
           Buy Now
        </div>
        </a>
+
+
+            </div>
+    
     </>
   );
 }

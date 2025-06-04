@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="contain" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <div className="contain" style={{ display: "flex", alignItems: "center", justifyContent: "space-between",fontFamily: "Arial, sans-serif", padding: "10px 20px", fontWeight:"bolder"}}>
       <Link to="/" className="logo" style={{ marginRight: "auto" }}>
         <img src="../assets/logo.jpg" alt="logo" style={{ height: "45px" }} />
       </Link>
