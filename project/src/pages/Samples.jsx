@@ -1,19 +1,26 @@
 const Samples = () => {
   return (
-    <div className="container">
-      <h1 className="text-center my-4">Sample Page</h1>
-      <p className="text-center">This is a sample page for demonstration purposes.</p>
-      <div className="row">
-        <div className="col-md-6">
-          <h2>Sample Content 1</h2>
-          <p>This section contains some sample content.</p>
-        </div>
-        <div className="col-md-6">
-          <h2>Sample Content 2</h2>
-          <p>This section contains some more sample content.</p>
-        </div>
-      </div>
+    <>
+    <div className="samples">
+      <div class="grid grid-flow-col grid-rows-4 gap-4">
+  <div>01</div>
+  <div>02</div>
+  <div>03</div> 
+  <div>04</div>
+  <div>05</div>
+  <div>06</div>
+  <div>07</div>
+  <div>08</div>
+  <div>09</div>
+  <div>10</div>
+  <div>11</div>
+  <div>12</div>
+</div>
+<div>
+  box
+</div>
     </div>
+    </>
   );
 }
 export default Samples;
