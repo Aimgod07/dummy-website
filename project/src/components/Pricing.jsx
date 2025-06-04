@@ -1,45 +1,63 @@
 const Pricing = () => {
     return (
-        <div className="bg-white py-16">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-3xl font-extrabold text-center text-gray-900 mb-8">Pricing Plans</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
-                        <h3 className="text-xl font-semibold mb-4">Basic Plan</h3>
-                        <p className="text-gray-700 mb-4">$10/month</p>
-                        <ul className="list-disc list-inside mb-4">
-                            <li>Feature 1</li>
-                            <li>Feature 2</li>
-                            <li>Feature 3</li>
-                        </ul>
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded">Choose Plan</button>
-                    </div>
-                    <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
-                        <h3 className="text-xl font-semibold mb-4">Pro Plan</h3>
-                        <p className="text-gray-700 mb-4">$20/month</p>
-                        <ul className="list-disc list-inside mb-4">
-                            <li>Feature 1</li>
-                            <li>Feature 2</li>
-                            <li>Feature 3</li>
-                        </ul>
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded">Choose Plan</button>
-                    </div>
-                    <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
-                        <h3 className="text-xl font-semibold mb-4">Enterprise Plan</h3>
-                        <p className="text-gray-700 mb-4">$50/month</p>
-                        <ul className="list-disc list-inside mb-4">
-                            <li>Feature 1</li>
-                            <li>Feature 2</li>
-                            <li>Feature 3</li>
-                        </ul>
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded">Choose Plan</button>
-                    </div>
-                </div>
-                <div className="text-center mt-8">
-                    <p className="text-gray-600">Need help choosing a plan? <a href="/contact" className="text-blue-500">Contact us</a></p>
-                </div>
-            </div>
+       <>
+           <div className="bg-gray-300 p-4 rounded-lg text-center mt-2 mb-0  bg-opacity-60">
+            <h2 className="text-3xl font-bold text-center mt-10 mb-6" style={{fontSize:"2.2rem"}}>PRICING</h2>
+           </div>
+       
+          
+   
+          <div className="grid grid-cols-3 gap-4 mt-6 ">
+        <div className="bg-gray-300 p-4 rounded-lg text-center mt-2 mb-0 hover:shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-opacity-60" style={{marginTop:"20px", padding:"20px" ,maxWidth:"300px",maxHeight:"550px",marginLeft:"150px"}} >
+            <img src="../assets/flt.png" alt="ticket"style={{padding:"2em"}}/>
+            <h3 className="font-semibold my-2">
+</h3>
+            <p className="text-gray-500 text-sm">DUMMY TICKETVerified flight reservation.<br></br>
+
+                         A maximum of two flights is permitted<br></br><br></br>
+
+                           Validity Depends on Jorney route and Journey date.It may be 48 hours to 21 days. Generally, Valid for 1 - 2 weeks.<br></br>
+                       Quick Delivery between 30 to 60 minutes.<br></br></p><br></br>
+
+            <button className="bg-red-400 text-white px-4 py-2 rounded-lg mt-4  hover:bg-white hover:text-red-500 ">Buy Now| $5</button>
         </div>
+
+        <div className="bg-gray-300 p-4 rounded-lg text-center hover:shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-opacity-60" style={{marginTop:"20px", padding:"20px" ,maxWidth:"300px",maxHeight:"550px" ,marginLeft:"100px"}}> 
+            <img src="../assets/hotel.png" alt="hotel"style={{padding:"2em"}}/>
+            <h3 className="font-semibold my-2">HOTEL RESERVATION</h3>
+            <p className="text-gray-500 text-sm">Verified Hotel reservation.<br></br>
+
+                                   A maximum of two hotel bookings is permitted.<br></br>
+
+                                   Valid up to a couple of days before to the intended check-in date.<br></br>
+
+                                   Quick Delivery between 30 to 60 minutes.</p><br></br>
+
+            <button className="bg-red-400 text-white px-4 py-2 rounded-lg mt-5  hover:bg-white hover:text-red-500 ">Buy Now| $3</button>
+        </div>
+
+
+
+
+        <div className="bg-gray-300  rounded-lg text-center p-4 mt-2 hover:shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-opacity-60" style={{marginTop:"20px", padding:"20px" ,maxWidth:"300px",maxHeight:"550px", marginLeft:"90px"}}>
+            <img src="../assets/insurance.png" alt="insurance" style={{padding:"2em"}}/>
+            <h3 className="font-semibold my-2">TRAVEL INSURANCE</h3>
+            <p className="text-gray-500 text-sm mt-6">Provable Insurance<br></br>
+
+
+Maximum 2 Changes Allowed.<br></br>
+
+
+Benifecial In Immigration and Visa Application.<br></br>
+
+
+Qucik Delivery between 30 to 60 minutes.</p><br></br>
+
+            <button className="bg-red-400 text-white px-4 py-2 rounded-lg mt-4 hover:bg-white hover:text-red-500 ">Buy Now| $8</button>
+        </div>
+
+    </div>
+       </>
     );
 }
 export default Pricing;

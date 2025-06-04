@@ -57,35 +57,32 @@ const Footer = () => {
 
     return (
         <ErrorBoundary>
-            <footer className={"container"}>
-                <hr />
-                <div className="content">
-                    <div>
-                        <img src="/logo.png" alt="logo" className="logo-img"/>
+            <footer className={"footer"}>
+            
+                    <div className="logo"> 
+                        <img src="../assets/logo.jpg" alt="logo" className="logo-img" style={{height:"100px"}}/>
                     </div>
-                    <div>
+                    <div className="quick-links">
                         <h4>Quick Links</h4>
                         <ul>
                             <li><Link to={"/"}>Home</Link></li>
-                            <li><Link to={"/appointment"}>Appointment</Link></li>
+                            <li><Link to={"/samples"}>Samples</Link></li>
                             <li><Link to={"/about"}>About</Link></li>
                         </ul>
                     </div>
-                    <div>
-                        <h4>Hours</h4>
-                        <ul>
-                            {hours.map((element) => (
-                                <li key={element.id}>
-                                    <span>{element.day}</span>
-                                    <span>{element.time}</span>
-                                </li>
-                            ))}
-                        </ul>
+                    <div className="contact-icons">
+                       
+                        <img src="../assets/youtube.png" alt="email" className="contact-icon"style={{height:"50px"}} />
+                        <img src="../assets/instagram.png" alt="location" className="contact-icon"style={{height:"50px"}} />
                     </div>
-                    <div>
+                    
+                    <div className="contact">
                         <h4>Contact</h4>
+                        <span>+91 1234567890</span>
+                         <img src="../assets/iphone.png" alt="phone" className="contact-icon" style={{height:"50px"}}/> <hr/>
+                    
                     </div>
-                </div>
+                
             </footer>
         </ErrorBoundary>
     );
