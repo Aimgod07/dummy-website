@@ -3,7 +3,19 @@ import React, { useState } from "react";
 const Dummyticket = () => {
   return (
     <>
-      <div className="dummyticket">
+
+
+
+    <div
+            className="bg-gray-100 py-16"
+            style={{
+                backgroundImage: "url('') ", 
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                obesity: 1,
+            }}>
+                            
+                             <div className="dummyticket">
         <div
           className="card"
           style={{
@@ -56,12 +68,15 @@ const Dummyticket = () => {
               Check
             </a>
           </h2>
+
+           
           
         </div>
-        <img
+         <img
           src="../assets/air1.jpg"
           alt="dummy ticket"
           style={{
+            backgroundColor:"unset",
             width: "20%",
             height: "500px",
             marginTop: "0px",
@@ -71,7 +86,10 @@ const Dummyticket = () => {
             padding: "0px",
           }}
         />
+       
       </div>
+            </div>
+     
     </>
   );
 }

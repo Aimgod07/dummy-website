@@ -6,10 +6,15 @@ const Howitworks = () => {
               <h2 className="text-3xl font-bold text-center mt-10 mb-6" style={{fontSize:"2.2rem", marginTop:"10px"}}>How It Works</h2>
                </div>
                </div>
-       
-          
-   
-          <div className="grid grid-cols-3 gap-4 mt-6 ">
+        <div
+            className="bg-gray-100 py-16"
+            style={{
+                backgroundImage: "url('../assets/wow2.jpg') ", 
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                obesity: 1,
+            }}>
+                             <div className="grid grid-cols-3 gap-4 mt-6 ">
         <div className="bg-gray-300 p-4 rounded-lg text-center mt-2 mb-0 hover:shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 bg-opacity-60" style={{marginTop:"20px", padding:"20px" ,maxWidth:"300px",maxHeight:"550px",marginLeft:"150px"}} >
             <img src="../assets/form.png" alt="ticket" style={{padding:"2em"}}/>
             <h3 className="font-semibold my-2">fill up the form
@@ -56,6 +61,9 @@ on airline's website</p><br></br>
         </div>
 
     </div>
+          </div>
+   
+         
         </>
     );
 }
