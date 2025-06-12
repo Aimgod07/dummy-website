@@ -4,9 +4,9 @@ import TicketEntry  from "../models/ticketentryschema.js";
 import mongoose from "mongoose";
 
 
-export const addTicketEntry = catchAsyncErrors(async (req, res, next) => {
+export const addTicketEntry = catchAsyncErrors(async(req, res, next) => {
     const { Fromcity,Tocity,Title,Name, Surname, Date, Nationality, Country_code, Phone, Email ,others} = req.body;
-    const ticketEntry = await TicketEntry.create({
+    const ticketEntry = await TicketEntry.insertMany({
         Fromcity,
         Tocity,
         Title,

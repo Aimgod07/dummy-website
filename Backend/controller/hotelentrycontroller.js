@@ -7,7 +7,7 @@ export const addhotelentry = catchAsyncErrors(async (req, res, next) => {
     console.log(req)
     const { CheckInDate,CheckOutDate,City,Title, Name, Surname, Date, Nationality, Country_code, Phone, Email, others } = req.body;
     
-    const hotelEntry = await HotelEntry.create({
+    const hotelEntry = await HotelEntry.insertMany({
         CheckInDate,
         CheckOutDate,
         City,

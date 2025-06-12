@@ -64,7 +64,7 @@ const ticketEntrySchema = new mongoose.Schema({
   
   others: {
     type: String,
-    required: true,
+    required: false,
     enum: ["Visa Validation", "Proof of Return", "Extention of Visa",  "Proof of Travel", "Other"]
   }
 

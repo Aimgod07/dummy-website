@@ -1,247 +1,252 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-const emptyForm = {
-  Fromcity: '',
-  Tocity: '',
-  Title: '',
-  Name: '',
-  Surname: '',
-  Date: '',
-  Nationality: '',
-  Country_code: '',
-  Phone: '',
-  Email: '',
-  others: ''
-};
+const Ticketform = () => {
+  // State to store multiple passenger forms
+  const [passengers, setPassengers] = useState([{
+    Fromcity: '',
+    Tocity: '',
+    Title: '',
+    City: '',
+    Name: '',
+    Surname: '',
+    Date: '',
+    Nationality: '',
+    Country_code: '',
+    Phone: '',
+    Email: '',
+    others: ''
+  }]);
 
-const Travelform = () => {
-  const [forms, setForms] = useState([{ ...emptyForm }]);
-  const [errors, setErrors] = useState([{}]);
-
-  const validateForm = (formData) => {
-    const newErrors = {};
-    const phoneRegex = /^\+?[\d\s-]{10,}$/;
-    const emailRegex = /^\S+@\S+\.\S+$/;
-
-    if (!formData.Fromcity) newErrors.Fromcity = 'Fromcity is required';
-    if (!formData.Tocity) newErrors.Tocity = 'Tocity is required';
-    if (!formData.Title) newErrors.Title = 'Title is required';
-    if (!formData.Name) newErrors.Name = 'Name is required';
-    if (!formData.Surname) newErrors.Surname = 'Surname is required';
-    if (!formData.Date) newErrors.Date = 'Date of birth is required';
-    if (!formData.Nationality) newErrors.Nationality = 'Nationality is required';
-    if (!formData.Country_code) newErrors.Country_code = 'Country code is required';
-    if (!formData.Phone) newErrors.Phone = 'Phone number is required';
-    else if (!phoneRegex.test(formData.Phone)) newErrors.Phone = 'Please use a valid phone number';
-    if (!formData.Email) newErrors.Email = 'Email is required';
-    else if (!emailRegex.test(formData.Email)) newErrors.Email = 'Please use a valid email address';
-    if (!formData.others) newErrors.others = 'Purpose is required';
-
-    return newErrors;
+  // Handle input change for a specific passenger
+  const handleInputChange = (index, field, value) => {
+    const updatedPassengers = [...passengers];
+    updatedPassengers[index] = {
+      ...updatedPassengers[index],
+      [field]: value
+    };
+    setPassengers(updatedPassengers);
   };
 
-  const handleChange = (idx, e) => {
-    const { name, value } = e.target;
-    const updatedForms = forms.map((form, i) =>
-      i === idx ? { ...form, [name]: value } : form
-    );
-    setForms(updatedForms);
+  // Add new passenger form
+  const addPassenger = () => {
+    setPassengers([...passengers, {
+      Fromcity: '',
+      Tocity: '',
+      Title: '',
+      City: '',
+      Name: '',
+      Surname: '',
+      Date: '',
+      Nationality: '',
+      Country_code: '',
+      Phone: '',
+      Email: '',
+      others: ''
+    }]);
   };
 
-  const handleSubmit = (e) => {
+  // Submit all passenger data to backend
+  const submitPassengers = async (e) => {
     e.preventDefault();
-    const allErrors = forms.map(validateForm);
-    setErrors(allErrors);
-    const isValid = allErrors.every((err) => Object.keys(err).length === 0);
-    if (isValid) {
-      console.log('Forms submitted:', forms);
-      // Add your submission logic here
-    }
-  };
+    try {
+      const response = await fetch('http://localhost:3000/api/v1/ticket/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(passengers[0]) // Assuming you want to send all passengers at once
+      });
 
+      if (!response.ok) {
+        throw new Error('Failed to submit passenger data');
+      }
 
-  //Passenger Limit______________
-
-  const handleAddPassenger = () => {
-    if (forms.length < 6) {
-      setForms([...forms, { ...emptyForm }]);
-      setErrors([...errors, {}]);
+      const result = await response.json();
+      console.log('Submission successful:', result);
+      // Reset form after successful submission
+      setPassengers([{
+        Fromcity: '',
+        Tocity: '',
+        City: '',
+        Title: '',
+        Name: '',
+        Surname: '',
+        Date: '',
+        Nationality: '',
+        Country_code: '',
+        Phone: '',
+        Email: '',
+        others: ''
+      }]);
+    } catch (error) {
+      console.error('Error submitting passenger data:', error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {forms.map((formData, idx) => (
-        <div key={idx} className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg mb-8">
-          <h2 className="text-2xl font-bold mb-6 text-center">
-            Ticket Booking  {forms.length > 1 ? `- Passenger ${idx + 1}` : ''}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700">From City/Origin</label>
-              <input
-                type="text"
-                name="Fromcity"
-                value={formData.Fromcity}
-                onChange={(e) => handleChange(idx, e)}
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-              />
-              {errors[idx]?.Fromcity && <p className="text-red-500 text-xs mt-1">{errors[idx].Fromcity}</p>}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700">To City</label>
-              <input
-                type="text"
-                name="Tocity"
-                value={formData.Tocity}
-                onChange={(e) => handleChange(idx, e)}
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-              />
-              {errors[idx]?.Tocity && <p className="text-red-500 text-xs mt-1">{errors[idx].Tocity}</p>}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Title</label>
-              <select
-                name="Title"
-                value={formData.Title}
-                onChange={(e) => handleChange(idx, e)}
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-              >
-                <option value="">Select Title</option>
-                {['Mr', 'Mrs', 'Miss', 'Ms', 'Dr'].map((title) => (
-                  <option key={title} value={title}>{title}</option>
-                ))}
-              </select>
-              {errors[idx]?.Title && <p className="text-red-500 text-xs mt-1">{errors[idx].Title}</p>}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Name</label>
-              <input
-                type="text"
-                name="Name"
-                value={formData.Name}
-                onChange={(e) => handleChange(idx, e)}
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-              />
-              {errors[idx]?.Name && <p className="text-red-500 text-xs mt-1">{errors[idx].Name}</p>}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Surname</label>
-              <input
-                type="text"
-                name="Surname"
-                value={formData.Surname}
-                onChange={(e) => handleChange(idx, e)}
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-              />
-              {errors[idx]?.Surname && <p className="text-red-500 text-xs mt-1">{errors[idx].Surname}</p>}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Date of Birth</label>
-              <input
-                type="date"
-                name="Date"
-                value={formData.Date}
-                onChange={(e) => handleChange(idx, e)}
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-              />
-              {errors[idx]?.Date && <p className="text-red-500 text-xs mt-1">{errors[idx].Date}</p>}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Nationality</label>
-              <input
-                type="text"
-                name="Nationality"
-                value={formData.Nationality}
-                onChange={(e) => handleChange(idx, e)}
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-              />
-              {errors[idx]?.Nationality && <p className="text-red-500 text-xs mt-1">{errors[idx].Nationality}</p>}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Country Code</label>
-              <input
-                type="text"
-                name="Country_code"
-                value={formData.Country_code}
-                onChange={(e) => handleChange(idx, e)}
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-              />
-              {errors[idx]?.Country_code && <p className="text-red-500 text-xs mt-1">{errors[idx].Country_code}</p>}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Phone Number</label>
-              <input
-                type="tel"
-                name="Phone"
-                value={formData.Phone}
-                onChange={(e) => handleChange(idx, e)}
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-              />
-              {errors[idx]?.Phone && <p className="text-red-500 text-xs mt-1">{errors[idx].Phone}</p>}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Email</label>
-              <input
-                type="email"
-                name="Email"
-                value={formData.Email}
-                onChange={(e) => handleChange(idx, e)}
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-              />
-              {errors[idx]?.Email && <p className="text-red-500 text-xs mt-1">{errors[idx].Email}</p>}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Purpose</label>
-              <select
-                name="others"
-                value={formData.others}
-                onChange={(e) => handleChange(idx, e)}
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-              >
-                <option value="">Select Purpose</option>
-                {['Visa Validation', 'Proof of Return', 'Extention of Visa', 'Proof of Travel', 'Other'].map((purpose) => (
-                  <option key={purpose} value={purpose}>{purpose}</option>
-                ))}
-              </select>
-              {errors[idx]?.others && <p className="text-red-500 text-xs mt-1">{errors[idx].others}</p>}
+    <div className="p-4 max-w-4xl mx-auto">
+      <h1 className="text-2xl font-bold mb-4">Ticket Entry Form</h1>
+      <form action="/post" onSubmit={submitPassengers}>
+        {passengers.map((passenger, index) => (
+          <div key={index} className="mb-6 p-4 border rounded">
+            <h2 className="text-xl font-semibold mb-2">Passenger {index + 1}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* ... form fields as before ... */}
+              <div>
+                <label className="block text-sm font-medium">From City</label>
+                <input
+                  type="text"
+                  value={passenger.Fromcity}
+                  onChange={(e) => handleInputChange(index, 'Fromcity', e.target.value)}
+                  required
+                  className="mt-1 p-2 w-full border rounded"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">To City</label>
+                <input
+                  type="text"
+                  value={passenger.Tocity}
+                  onChange={(e) => handleInputChange(index,'Tocity',e.target.value)}
+                  required
+                  className="mt-1 p-2 w-full border rounded"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">City</label>
+                <input
+                  type="text"
+                  value={passenger.City}
+                  onChange={(e) => handleInputChange(index, 'City', e.target.value)}
+                  required
+                  className="mt-1 p-2 w-full border rounded"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Title</label>
+                <select
+                  value={passenger.Title}
+                  onChange={(e) => handleInputChange(index, 'Title', e.target.value)}
+                  required
+                  className="mt-1 p-2 w-full border rounded"
+                >
+                  <option value="">Select Title</option>
+                  <option value="Mr">Mr</option>
+                  <option value="Mrs">Mrs</option>
+                  <option value="Miss">Miss</option>
+                  <option value="Ms">Ms</option>
+                  <option value="Dr">Dr</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Name</label>
+                <input
+                  type="text"
+                  value={passenger.Name}
+                  onChange={(e) => handleInputChange(index, 'Name', e.target.value)}
+                  required
+                  className="mt-1 p-2 w-full border rounded"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Surname</label>
+                <input
+                  type="text"
+                  value={passenger.Surname}
+                  onChange={(e) => handleInputChange(index, 'Surname', e.target.value)}
+                  required
+                  className="mt-1 p-2 w-full border rounded"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Date of Birth</label>
+                <input
+                  type="date"
+                  value={passenger.Date}
+                  onChange={(e) => handleInputChange(index, 'Date', e.target.value)}
+                  required
+                  className="mt-1 p-2 w-full border rounded"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Nationality</label>
+                <input
+                  type="text"
+                  value={passenger.Nationality}
+                  onChange={(e) => handleInputChange(index, 'Nationality', e.target.value)}
+                  required
+                  className="mt-1 p-2 w-full border rounded"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Country Code</label>
+                <input
+                  type="text"
+                  value={passenger.Country_code}
+                  onChange={(e) => handleInputChange(index, 'Country_code', e.target.value)}
+                  required
+                  className="mt-1 p-2 w-full border rounded"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Phone</label>
+                <input
+                  type="tel"
+                  value={passenger.Phone}
+                  onChange={(e) => handleInputChange(index, 'Phone', e.target.value)}
+                  required
+                  pattern="\+?[\d\s-]{10,}"
+                  className="mt-1 p-2 w-full border rounded"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Email</label>
+                <input
+                  type="email"
+                  value={passenger.Email}
+                  onChange={(e) => handleInputChange(index, 'Email', e.target.value)}
+                  required
+                  className="mt-1 p-2 w-full border rounded"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Purpose</label>
+                <select
+                  value={passenger.others}
+                  onChange={(e) => handleInputChange(index, 'others', e.target.value)}
+                  required
+                  className="mt-1 p-2 w-full border rounded"
+                >
+                  <option value="">Select Purpose</option>
+                  <option value="Visa Validation">Visa Validation</option>
+                  <option value="Proof of Return">Proof of Return</option>
+                  <option value="Extention of Visa">Extention of Visa</option>
+                  <option value="Proof of Travel">Proof of Travel</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
             </div>
           </div>
+        ))}
+
+        <div className="flex gap-4">
+          <button
+            type="button"
+            onClick={addPassenger}
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          >
+            Add Passenger
+          </button>
+          <button
+            type="submit"
+            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+          >
+            Submit All
+          </button>
         </div>
-      ))}
-
-      <div className="max-w-2xl mx-auto flex flex-col gap-4">
-        <button
-          type="button"
-          onClick={handleAddPassenger}
-
-          //form length limit
-          
-          disabled={forms.length >= 6}
-          className={`w-full bg-green-600 text-white p-2 rounded-md hover:bg-green-700 ${forms.length >= 6 ? 'opacity-50 cursor-not-allowed' : ''}`}
-        >
-          Add Passenger
-        </button>
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700"
-          style={{ marginTop: '20px' }}
-        >
-          Submit
-        </button>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 
-export default Travelform;
+export default Ticketform;
